@@ -132,3 +132,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+mi-1/.DS_Store
