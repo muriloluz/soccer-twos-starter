@@ -7,6 +7,7 @@ import sys
 import soccer_twos
 from soccer_twos.utils import get_agent_class
 
+ENV_MURILO = "/Users/murilolopes/opt/anaconda3/envs/soccer-3.8/lib/python3.8/site-packages/soccer_twos/bin/v2/mac_os/soccer-twos.app"
 
 if __name__ == "__main__":
     LOGLEVEL = os.environ.get("LOGLEVEL", "INFO").upper()
@@ -35,7 +36,7 @@ if __name__ == "__main__":
     logging.info(f"Loading {agent2_module_name} as orange team")
     agent2_module = importlib.import_module(agent2_module_name)
     # instantiate env so agents can access e.g. env.action_space.shape
-    env = soccer_twos.make(base_port=args.base_port)
+    env = soccer_twos.make(base_port=args.base_port,env_path=ENV_MURILO)
     agent1 = get_agent_class(agent1_module)(env)
     agent2 = get_agent_class(agent2_module)(env)
     env.close()
@@ -44,13 +45,17 @@ if __name__ == "__main__":
     logging.info(f"{agent2_module_name} name is {agent2.name}")
     env = soccer_twos.make(
         watch=True,
+        render=True,
         base_port=args.base_port,
         blue_team_name=agent1.name,
         orange_team_name=agent2.name,
+        env_path=ENV_MURILO,
+        time_scale=1
     )
     obs = env.reset()
     team0_reward = 0
     team1_reward = 0
+
     while True:
         # use agent1 as controller for team 0 and vice versa
         agent1_actions = agent1.act({0: obs[0], 1: obs[1]})
