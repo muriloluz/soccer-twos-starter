@@ -1,6 +1,8 @@
 import soccer_twos
 
-env = soccer_twos.make(render=True)
+ENV_MURILO = "/Users/murilolopes/opt/anaconda3/envs/soccer-3.8/lib/python3.8/site-packages/soccer_twos/bin/v2/mac_os/soccer-twos.app"
+
+env = soccer_twos.make(render=True, env_path=ENV_MURILO,time_scale=1)
 print("Observation Space: ", env.observation_space.shape)
 print("Action Space: ", env.action_space)
 
