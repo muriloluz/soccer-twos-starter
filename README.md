@@ -1,4 +1,4 @@
-# Soccer-Twos Starter Kit
+# Soccer-Twos Starter Kit Editei aqui
 
 Example training/testing scripts for our [Soccer-Twos](https://github.com/bryanoliveira/soccer-twos-env) environment.
 
